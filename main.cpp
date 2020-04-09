@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 
-//WELCOME TO MY DEMO
-
 bool isValid(const std::string &s) {
 
     int len = s.length();
@@ -24,29 +22,29 @@ int main() {
         if (creditCardNumber == "exit")
             break;
         else if (!isValid(creditCardNumber)) {
-        std::cout << "This is a BAD INPUT! \n";
+            std::cout << "This is a BAD INPUT! \n";
             continue;
-    }
-
-    int len = creditCardNumber.length();
-    int doubleEvenSum = 0;
-
-    for (int i = len - 2; i >= 0; i = i - 2) {
-        int dbl = ((creditCardNumber[i] - 48) * 2);
-        if (dbl > 9) {
-            dbl = (dbl / 10) + (dbl % 10);
         }
-        doubleEvenSum += dbl;
+
+        int len = creditCardNumber.length();
+        int doubleEvenSum = 0;
+
+        for (int i = len - 2; i >= 0; i = i - 2) {
+            int dbl = ((creditCardNumber[i] - 48) * 2);
+            if (dbl > 9) {
+                dbl = (dbl / 10) + (dbl % 10);
+            }
+            doubleEvenSum += dbl;
+        }
+
+        for (int i = len - 1; i >= 0; i = i - 2) {
+            doubleEvenSum += (creditCardNumber[i] - 48);
+        }
+
+        std::cout << (doubleEvenSum % 10 == 0 ? "Valid!" : "Invalid!") << std::endl;
+
+        continue;
     }
 
-    for (int i = len - 1; i >= 0; i = i - 2) {
-        doubleEvenSum += (creditCardNumber[i] - 48);
-    }
-
-    std::cout << (doubleEvenSum % 10 == 0 ? "Valid!" : "Invalid!") << std::endl;
-
-    continue;
-}
-
-return 0;
+    return 0;
 }
